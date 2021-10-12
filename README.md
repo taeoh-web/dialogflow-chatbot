@@ -12,6 +12,7 @@ https://cloud.google.com/dialogflow/es/docs/quick/setup
 - components : React Component 모음 
 - data : Data Source 
 - hooks : React Custom Hook 모음 
+- interfaces : 인터페이스 정의 모음 
 - lib : 라이브러리 모음 
 - pages : Next.js Page 
 - public : Static File   

@@ -2,7 +2,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { Session } from "next-iron-session";
 import withSession from '../../../lib/session'
-import { CC2 } from '../../../interfaces/cc2'
 import axios from "axios";
 
 const dialogflow = require('@google-cloud/dialogflow');
@@ -43,20 +42,7 @@ async function handler(
 
             console.log(result[0].queryText);
             
-            //CC2에 전송 
-            const payLoad: any = {
-                session_id: req.session.get("chatRoom").session,
-                uid: req.session.get("chatRoom").uid,
-                utterance: result[0].queryText,
-                intent: result[0].intentDisplayName,
-                entity: entity,
-                entity_value: entityValue,
-                confidence: result[0].intentDetectionConfidence,
-                is_fail: result[0].isFallback,
-                reg_dt: timestamp()
-            }
            
-            cc2Send(payLoad);
 
             res.status(200).json({
                 status: 1,
@@ -75,12 +61,6 @@ async function handler(
 
 
 
-async function cc2Send(payLoad: CC2){
-    
-    console.log('cc2RequestPayload', payLoad);
-    const cc2Result = await axios.post('http://192.168.0.101:1100/v1/api/session/2328943', payLoad);
-    console.log('cc2Response', cc2Result.status === 200 && cc2Result.data);
-} 
 
 
 function timestamp(){ 
