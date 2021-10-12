@@ -1,0 +1,7 @@
+.component-bubble{
+    margin:20px;
+}
+
+
+.component-bubble.user{background-color: #efefef; }
+.component-bubble.bot{background-color: #a5d175; color: #efefef;}
